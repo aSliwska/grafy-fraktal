@@ -91,7 +91,7 @@ def main():
 	if args.save or args.output_file != 'graph.png':
 		graph_draw(graph, pos=pos, vertex_text=graph.vertex_index, output=args.output_file, output_size=(int(args.image_size), int(args.image_size)), edge_pen_width=float(args.edge_width))
 
-	graph_draw(graph, pos=pos, vertex_text=graph.vertex_index)
+	graph_draw(graph, pos=pos, vertex_text=graph.vertex_index, bg_color='white', edge_pen_width=float(args.edge_width))
 		
 
 if __name__ == "__main__":

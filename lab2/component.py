@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from randomize import read_args, read_input, InputType
-from randomize import create_graph_from_adjacency_matrix
+from lab2.randomize import read_args, read_input, InputType
+from lab2.randomize import create_graph_from_adjacency_matrix
 
 
 def dfs(visited, graph, node):

@@ -80,10 +80,7 @@ def merge_components(G, wmax=2,  random_state=42):
 # 2. Merge all separate components in the graph together
 
 
-graph = random_weighted(6, 9, 11, random_state=42)
-graph = merge_components(graph, wmax=11, random_state=42)
 
-draw_weighted(graph)
 
 
 

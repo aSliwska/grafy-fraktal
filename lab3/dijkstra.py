@@ -41,10 +41,21 @@ def dijkstra_undirected(G, s, verbose = False):
     return G # All data is stored in the graph
 
 
+def trace_path(G, node):
+    parentNode = G.nodes[node]["parent"]
+    if (parentNode == -1):
+        return [[node], 0]
+    else:
+        path = trace_path(G, parentNode)
+        return [path[0] + [node], path[1] + G.edges[node, parentNode]["weight"]]
+
+def shortest_paths(G, verbose = False):
+    pathinfo = []
+    for node in G.nodes:
+        path = trace_path(G, node)
+        if verbose:
+            print("Path: ", path[0], " Length: ", path[1])
+        pathinfo.append(path)
+    return pathinfo
 
 
-graph = random_weighted(6, 9, 11, random_state=42)
-graph = merge_components(graph, wmax=11, random_state=42)
-dijkstra_undirected(graph,0, True)
-
-draw_weighted(graph)

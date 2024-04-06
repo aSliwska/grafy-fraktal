@@ -83,5 +83,3 @@ def merge_components(G, wmax=2,  random_state=42):
 
 
 
-
-

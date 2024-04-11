@@ -33,3 +33,29 @@ argument:
 input file containing adjacency matrix
 ex. python3 component.py example_ms.txt
 
+## task 4: euler_path.py
+Prints list of nodes that form euler path
+
+available arguments:
+
+-sq list of degrees separated by spaces for example 
+
+python3 euler_path.py -sq 2 2 2 2 2 2 2
+
+## task 5: regular.py
+Generates a random k-regular graph
+
+only one argument: k
+
+example:
+
+python3 regular.py 5
+
+## task 6: hamilton.py
+Seeks for Hamilton Path
+
+only one argument: file
+
+example:
+
+python3 regular.py example_ms.txt

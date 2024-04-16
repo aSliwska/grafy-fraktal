@@ -20,9 +20,10 @@ first line of input file has to be 'ms'
 input:
 adjacency matrix
 
-argument:
-input file containing adjacency matrix
-ex. python3 randomize.py example_ms.txt
+arguments:
+-input file containing adjacency matrix
+-number of swaps that will be attempted
+ex. python3 randomize.py example_ms.txt 15
 
 ## task 3: component.py
 first line of input file has to be 'ms'

@@ -13,6 +13,7 @@ class InputType(Enum):
 def read_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('input_file')
+    parser.add_argument('num_swaps', type = int)
     return parser.parse_args()
 
 def read_input(args):
@@ -56,16 +57,15 @@ def create_graph_from_adjacency_matrix(input_data):
     return G
 
 def randomize(G):
-    
+    args = read_args()
     if len(G.nodes())<4:
         print("Zbyt mało wierzchołków")
         return
 
-    it = len(G.edges())
-    if it < 2:
+    if len(G.edges())<2:
         print("Zbyt mało krawędzi")
         return
-    for _ in range(it*2):
+    for _ in range(args.num_swaps):
         edges = list(G.edges())
         edge1, edge2 = random.sample(edges, 2)
 

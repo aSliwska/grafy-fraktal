@@ -56,16 +56,33 @@ def create_graph_from_adjacency_matrix(input_data):
 
     return G
 
+def can_be_randomized(G):
+    if len(G.nodes()) < 4:
+        return False
+
+    if len(G.edges()) < 2:
+        return False
+
+    edges = list(G.edges())
+    n = len(edges)
+    for i in range(n):
+        for j in range(i + 1, n):
+            e1, e2 = edges[i], edges[j]
+            a, b = e1
+            c, d = e2
+            if len(set([a, b, c, d])) == 4: 
+                if not G.has_edge(a, c) and not G.has_edge(b, d):
+                    return True
+                if not G.has_edge(a, d) and not G.has_edge(b, c):
+                    return True
+    return False
+
 def randomize(G):
     args = read_args()
-    if len(G.nodes())<4:
-        print("Zbyt mało wierzchołków")
-        return
+    num_swaps = args.num_swaps
+    curr_swaps = 0
 
-    if len(G.edges())<2:
-        print("Zbyt mało krawędzi")
-        return
-    for _ in range(args.num_swaps):
+    while curr_swaps < num_swaps:
         edges = list(G.edges())
         edge1, edge2 = random.sample(edges, 2)
 
@@ -73,31 +90,37 @@ def randomize(G):
         c, d = edge2
 
         if not G.has_edge(a, d) and not G.has_edge(b, c) and a != d and b != c:
+
             G.remove_edge(a, b)
             G.remove_edge(c, d)
 
             G.add_edge(a, d)
             G.add_edge(b, c)
 
+            curr_swaps+=1
+
 def main():
     args = read_args()
     input_type, input_data = read_input(args)
 
     if input_type != InputType.ADJACENCY_MATRIX:
-        print('graph needs to be encoded as an adjacency matrix')
+        print('Graph needs to be encoded as an adjacency matrix.')
         return
     
     G = create_graph_from_adjacency_matrix(input_data)
-
-    plt.subplot(1, 2, 1)
-    plt.title("Przed")
-    nx.draw_circular(G,with_labels = True)
-    randomize(G)
-    plt.subplot(1, 2, 2)
-    plt.title("Po")
-    nx.draw_circular(G,with_labels = True)
-    plt.show()
-
+    if can_be_randomized(G):
+        plt.subplot(1, 2, 1)
+        plt.title("Przed")
+        nx.draw_circular(G,with_labels = True)
+        randomize(G)
+        plt.subplot(1, 2, 2)
+        plt.title("Po")
+        nx.draw_circular(G,with_labels = True)
+        plt.show()
+    else:
+        print("Graph cannot be randomized.")
+        nx.draw_circular(G,with_labels = True)
+        plt.show()
 
 if __name__ == '__main__':
     main()

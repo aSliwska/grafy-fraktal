@@ -23,6 +23,7 @@ available arguments:
 - -m / --mode                   "r" for random walk or "p" for power iteration
 
 python3 pagerank.py input.txt -m=r -n=1000000 -d=0.15 
+
 python3 pagerank.py input.txt -m=p -d=0.15 -of=output_power_iteration.txt
 
 
@@ -37,4 +38,5 @@ available arguments:
 
 
 python3 komiwojazer.py input.dat -s -vv -it=50000
+
 python3 komiwojazer.py input.dat -of=output.dat -it=1000

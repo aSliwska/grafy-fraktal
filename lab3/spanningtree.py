@@ -1,17 +1,15 @@
 import networkx as nx
 def Kruskal(G):
-    edgeList = [] # All edges
-    tindex = [-1] * len(G.nodes) # Track which tree the nodes belong to
-    currentTree = 0 # Tree index to add if new pair
-    finalEdges = [] # Edges that make it into the final graph
+    edgeList = []  # All edges
+    tindex = [-1] * len(G.nodes)  # Track which tree the nodes belong to
+    currentTree = 0  # Tree index to add if new pair
+    finalEdges = []  # Edges that make it into the final graph
 
     for edge in G.edges:
         edgeList.append([edge, G.edges[edge]["weight"]])
 
-    k = lambda val : val[1]
+    k = lambda val: val[1]
     edgeList.sort(key=k)
-
-
 
     for edge in edgeList:
         t1 = tindex[edge[0][0]]

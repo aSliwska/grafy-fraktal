@@ -5,8 +5,10 @@ from lab3.spanningtree import *
 
 # Task 1 - Random graph
 
-graph = random_weighted(6, 9, 11, random_state=42)
+graph = random_weighted(6, 3, 11, random_state=42)
+draw_weighted(graph)
 graph = merge_components(graph, wmax=11, random_state=42)
+draw_weighted(graph)
 
 # Task 2 - Dijkstra's algorithm
 
